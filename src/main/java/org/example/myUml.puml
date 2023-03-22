@@ -1,0 +1,35 @@
+@startuml
+class Planner{
++locations:List<Location>
+}
+abstract class Location{
+-pointX:int
+-pointY:int
+
++getClosestCity(): City
+}
+
+class Landmark extends Location{
+-name:String
+-entranceFee: int
+-typeOf:typesOfLandmarks
+}
+class City extends Location{
+-name:String
++nearLandmarks():Landmark
+}
+class UserLocation extends Location{
+-locationsHistory : List<int[2]>
+-currentLocation : Location
+}
+
+enum typesOfLandmarks{
+HISTORIC
+SCENIC
+INTERIOR
+}
+
+Landmark -> typesOfLandmarks
+Planner -> Location
+
+@enduml
